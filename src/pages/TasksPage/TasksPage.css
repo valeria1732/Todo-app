@@ -1,0 +1,100 @@
+/* ── Layout principal ── */
+.tasks-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--primary-dark, #222653);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.tasks-main {
+  flex: 1;
+  padding: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Cabecera ── */
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tasks-title {
+  color: #F7DD55;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.tasks-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── Badges y Estados ── */
+.priority-badge {
+  background-color: rgba(247, 221, 85, 0.15);
+  color: #F7DD55;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid rgba(247, 221, 85, 0.5);
+  display: inline-block;
+}
+
+/* ── Tabla (Reutiliza la lógica de Users) ── */
+.tasks-table th.center { text-align: center; width: 100px; }
+.tasks-table td.center { text-align: center; }
+
+.td-task-name { font-weight: 600; color: #fff; }
+.td-description { opacity: 0.7; font-size: 12px; }
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+  .tasks-header { flex-direction: column; align-items: flex-start; }
+  .tasks-search { width: 100%; }
+  .tasks-search .input { flex: 1; }
+}
+
+/* ── Tabla responsiva en móvil ── */
+@media (max-width: 768px) {
+  .tasks-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tasks-search {
+    width: 100%;
+  }
+
+  .tasks-search .input {
+    flex: 1;
+  }
+
+  .tasks-table th:nth-child(3),
+  .tasks-table td:nth-child(3) {
+    display: none; /* oculta "Descripción" */
+  }
+
+  .modal-box {
+    padding: 20px 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

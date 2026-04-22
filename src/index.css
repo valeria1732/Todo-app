@@ -1,0 +1,15 @@
+/* Global Styles */
+:root {
+  --primary-dark: #222653;
+  --primary-light: #A4C1FD;
+  --accent-blue: #3971E2;
+  --highlight-yellow: #F7DD55;
+  --accent-orange: #EDB441;
+}
+
+body {
+  background-color: var(--primary-dark);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+

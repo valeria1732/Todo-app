@@ -1,0 +1,208 @@
+/* ── Panel lateral ── */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background-color: #1a1d3d;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+  border-right: 1px solid rgba(164, 193, 253, 0.1);
+  z-index: 200;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* ── Logo ── */
+.sidebar-brand {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.sidebar-brand h2 {
+  color: #F7DD55;
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.sidebar-brand-line {
+  height: 3px;
+  background-color: #3971E2;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  width: 60%;
+}
+
+/* ── Navegación ── */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar-link {
+  color: #A4C1FD;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(164, 193, 253, 0.05);
+}
+
+.sidebar-link.active {
+  color: #F7DD55;
+  background-color: rgba(57, 113, 226, 0.2);
+  font-weight: bold;
+  border-left-color: #F7DD55;
+}
+
+.sidebar-link .material-icons {
+  font-size: 20px;
+  color: inherit;
+}
+
+/* ── Botón logout ── */
+.sidebar-logout {
+  margin-top: auto;
+  background: none;
+  border: 2px solid #EDB441;
+  color: #EDB441;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  width: 100%;
+}
+
+.sidebar-logout:hover {
+  background-color: #EDB441;
+  color: #1a1d3d;
+}
+
+.sidebar-logout .material-icons {
+  font-size: 18px;
+}
+
+/* ── Botón hamburguesa — solo móvil ── */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 300;
+  background-color: #1a1d3d;
+  border: 1px solid rgba(164, 193, 253, 0.2);
+  color: #F7DD55;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: rgba(57, 113, 226, 0.2);
+}
+
+.sidebar-toggle .material-icons {
+  font-size: 24px;
+  display: flex;
+}
+
+/* ── Overlay oscuro ── */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 150;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Responsivo ── */
+@media (max-width: 768px) {
+
+  /* Mostrar botón hamburguesa */
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  /* Sidebar oculto fuera de pantalla por defecto */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+  }
+
+  /* Sidebar visible al abrir */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* El contenido principal ocupa todo el ancho */
+  .users-container,
+  .tasks-container {
+    flex-direction: column;
+  }
+
+  .users-main,
+  .tasks-main {
+    padding: 16px 12px;
+    padding-top: 60px;
+  }
+
+  /* Ocultar columnas secundarias en pantallas pequeñas */
+  .users-table th:nth-child(4),
+  .users-table td:nth-child(4) {
+    display: none; /* Registro */
+  }
+
+  .tasks-table th:nth-child(3),
+  .tasks-table td:nth-child(3) {
+    display: none; /* Descripción */
+  }
+
+  /* Modales en móvil */
+  .modal-box {
+    padding: 20px 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

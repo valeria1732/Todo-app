@@ -1,0 +1,415 @@
+/* ── Layout principal ── */
+.users-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--primary-dark, #222653);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.users-main {
+  flex: 1;
+  padding: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Cabecera ── */
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.users-title {
+  color: #F7DD55;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.users-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.users-search .input {
+  width: 140px;
+  flex: none;
+}
+
+/* ── Barra de acciones ── */
+.users-action-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+/* ── Alertas ── */
+.alert-bar {
+  margin-bottom: 12px;
+}
+
+/* ── Inputs ── */
+.input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(164, 193, 253, 0.3);
+  background-color: #1a1d3d;
+  color: white;
+  font-size: 13px;
+  outline: none;
+  flex: 1;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #3971E2;
+}
+
+/* ── Botones ── */
+.btn-primary {
+  background-color: #EDB441;
+  color: #222653;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary.blue {
+  background-color: #3971E2;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: rgba(164, 193, 253, 0.7);
+  border: 1px solid rgba(164, 193, 253, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(164, 193, 253, 0.08);
+}
+
+/* ── Tabla ── */
+.table-wrapper {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(164, 193, 253, 0.1);
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 500px;
+}
+
+.users-table thead tr {
+  background-color: rgba(164, 193, 253, 0.08);
+  color: #A4C1FD;
+}
+
+.users-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.users-table th.center {
+  text-align: center;
+  width: 90px;
+}
+
+.users-table th.narrow {
+  width: 40px;
+}
+
+.users-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.td-id {
+  opacity: 0.5;
+}
+
+.td-fullname {
+  font-weight: 500;
+}
+
+.td-username {
+  color: #F7DD55;
+  font-size: 12px;
+}
+
+.td-date {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.td-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn {
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.15s, opacity 0.15s;
+  user-select: none;
+}
+
+.icon-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+.icon-btn.edit   { color: #3971E2; }
+.icon-btn.delete { color: #ff6b6b; }
+.icon-btn.save   { color: #2ecc71; font-size: 20px; }
+
+.no-actions {
+  opacity: 0.2;
+  font-size: 12px;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: #1a1d3d;
+  border: 1px solid rgba(164, 193, 253, 0.2);
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.92) translateY(12px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  color: #F7DD55;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: rgba(164, 193, 253, 0.6);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: white;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #A4C1FD;
+  text-transform: uppercase;
+}
+
+.field-hint {
+  font-size: 10px;
+  color: rgba(164, 193, 253, 0.45);
+  margin-top: 2px;
+}
+
+.modal-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+/* ── Mensajes de éxito ── */
+.success-bar {
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tabla vacía ── */
+.table-empty {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.4;
+  font-size: 13px;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+  .users-main {
+    padding: 16px 12px;
+  }
+
+  .users-title {
+    font-size: 1.1rem;
+  }
+
+  .users-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .users-search {
+    width: 100%;
+  }
+
+  .users-search .input {
+    width: 100%;
+    flex: 1;
+  }
+
+  .modal-box {
+    padding: 20px 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Tabla responsiva en móvil ── */
+@media (max-width: 768px) {
+  .users-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .users-search {
+    width: 100%;
+  }
+
+  .users-search .input {
+    flex: 1;
+  }
+
+  /* Ocultar columnas menos importantes en pantallas pequeñas */
+  .users-table th:nth-child(4),
+  .users-table td:nth-child(4) {
+    display: none; /* oculta "Registro" */
+  }
+
+  .modal-box {
+    padding: 20px 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
